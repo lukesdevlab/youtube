@@ -1,0 +1,54 @@
+Build a simple top-down 2D driving game I can run locally in a browser.
+
+Goal:
+Create a playable driving experience where the player steers a car along a track, avoids obstacles, and reaches a finish line. This is a functional prototype — prioritize a working game loop, clear module structure, and the required features below over visual polish.
+
+Required features:
+1. Top-down view with a viewport/camera that keeps the car centered (or smoothly follows it).
+2. A single continuous drivable track from start to finish.
+3. The track must pass through, in order, visually distinct sections (different colors, labels, or simple scenery is enough — no 3D geometry required):
+   - an open section
+   - a tunnel section (e.g. darker/narrower)
+   - a bridge section (e.g. over water or a different surface color)
+   - a finish line
+4. At least 3 obstacles placed on or near the track that the player must avoid.
+5. Collision detection between the car and obstacles (simple distance or axis-aligned box checks are fine).
+6. Clear win condition when the player reaches the finish line.
+7. On collision, reset the car to the start (checkpoint resets are optional).
+8. On-screen instructions for controls and a simple UI message for collision / win states.
+
+Technical requirements:
+- Use HTML Canvas with vanilla JavaScript (preferred), or a minimal dev setup (e.g. Vite serving plain JS modules).
+- Do not use Three.js, Unity, Godot, or other game engines — keep it 2D and lightweight.
+- Provide a simple way to run it locally (for example: npm install && npm run dev, or a single HTML file if that is truly sufficient).
+- Include a short README with:
+  - how to run the game
+  - controls
+  - brief explanation of the project structure and main modules
+
+Architecture expectations (this is the main thing being tested):
+Organize the code into clear, separated modules rather than one monolithic script. At minimum, separate:
+- track/world setup (sections, obstacles, finish line)
+- car movement / input handling
+- camera / viewport logic
+- collision detection
+- game state (playing, crashed/reset, finished)
+
+A sensible layout might look like src/world.js, src/car.js, src/camera.js, src/collision.js, src/gameState.js, and src/main.js — but use whatever names fit your design as long as concerns are clearly split.
+
+Keep the scope realistic:
+- Simple flat graphics (rectangles, circles, colored paths) are expected.
+- Arcade-style movement is fine; realistic physics is not required.
+- Do not spend time on menus, multiplayer, sound, sprite art, or advanced graphics unless core gameplay is already complete.
+
+Deliverables:
+- All source files needed to run the game
+- README with run instructions
+- The game should be playable end-to-end without manual code edits
+
+Before finishing, verify:
+- The car can move and steer
+- The viewport follows the car
+- I can drive through tunnel → bridge → finish sections in order
+- At least 3 obstacles penalize the car via collision
+- The finish line triggers a win state

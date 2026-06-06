@@ -1,0 +1,61 @@
+Build a memory card matching game as a single-page web app using vanilla HTML, CSS, and JavaScript only (no React, Vue, Svelte, etc.).
+
+Goal:
+A playable "concentration" game: flip cards, find matching pairs, finish the board. Prioritize correct game rules and responsive interaction.
+
+Technical requirements:
+- Vanilla HTML, CSS, and JavaScript only.
+- Runs locally without a backend: open index.html directly or use a minimal dev server (e.g. npx serve . or Vite).
+- Include a README with: how to run, rules, brief file/structure notes.
+
+Board setup:
+- 4×4 grid (16 cards, 8 pairs).
+- Each pair shares the same face value (emoji, letter, or colour block — your choice; faces must be distinguishable).
+- Shuffle card positions on New game.
+
+Gameplay:
+
+1. Flip
+   - Cards start face-down.
+   - Click a face-down card to reveal it.
+   - At most two cards face-up at once (ignore extra clicks while two are showing).
+
+2. Match
+   - If two revealed cards match, leave them face-up (visually "locked").
+   - If they do not match, flip both back face-down after a short delay (300–800 ms — pick one value and use it consistently).
+
+3. Win
+   - When all pairs are matched, show a clear win message with total moves (one move = one pair of flips, i.e. each attempt to match two cards counts as 1 move).
+
+4. New game
+   - Button reshuffles the board, resets moves to 0, hides the win message, and returns all cards face-down.
+
+5. Best score
+   - Persist the lowest move count for a completed game in localStorage.
+   - Show "Best: N moves" (or "No best yet" before the first win).
+   - Only update best when the player wins with fewer moves than the stored best (or on first win).
+
+UX expectations:
+- Face-down vs face-up states obvious.
+- Locked matched pairs cannot be flipped again.
+- Empty or confusing click feedback is not required, but the board should feel responsive.
+- Desktop layout is enough.
+
+Code quality expectations:
+- Separate game state, shuffle/deck logic, and rendering (multiple JS files or clear modules).
+- No dead UI.
+
+Scope guidance:
+- Do NOT build: multiplayer, accounts, leaderboards, timers, sound packs, or grid sizes beyond 4×4.
+- Do NOT add npm runtime dependencies.
+
+Deliverables:
+- All source files to run the app in a browser
+- README with run instructions
+- Game works end-to-end without manual code edits
+
+Before finishing, verify:
+- Board shuffles on load and on New game
+- Two-card flip limit and mismatch flip-back work
+- Matched pairs stay revealed; win triggers at 8 pairs
+- Move count and best score behave correctly

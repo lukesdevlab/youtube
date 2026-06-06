@@ -1,0 +1,32 @@
+Question 1. (answer = 1)
+
+A group of four people needs to cross a bridge at night. The bridge is very old and rickety. They have only one torch and because it's night-time, the torch is necessary to cross the bridge. Each person walks at a different speed: - A takes 1 minute to cross, - B takes 2 minutes, - C takes 5 minutes, and - D takes 10 minutes. What is the fastest time they can all get across the bridge?
+
+1. 10 minutes
+2. 14 minutes
+3. 17 minutes
+4. There is not enough information to determine the fastest time.
+
+=========================
+
+Question 2. (answer = 1)
+The Poisoned Wine - A king has 1000 sweet bottles of wine, and one contains a very bitter poison. The poison takes effect exactly 24 hours after consumption. The king needs to find the poisoned bottle in 24 hours for an event. He has 10 prisoners to test the wine. What is the fastest way for him to identify the poisoned bottle?
+
+1. Divide the bottles of wine amongst the prisoners and get them to note which one tastes bitter.
+
+2. Using a binary search strategy with the 10 prisoners, leveraging the concept of binary numbers to minimize the number of tests needed. The king will know results in 24 hours
+
+3. Get all of the prisoners to sample each of the bottles of wine and see who dies in 24 hours.
+
+4. Divide the bottles of wine amongst the prisoners and get them to take a sip and note which one dies in 24 hours.
+
+=========================
+
+Question 3. (answer = 1)
+
+How many pairs of twins do you need in a room for there to be at least a 50% chance that two people have the same birthday?
+
+1. 1 pair
+2. 12 pairs
+3. 23 pairs
+4. 46 pairs

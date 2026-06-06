@@ -1,0 +1,61 @@
+Build a personal expense tracker as a single-page web app using vanilla HTML, CSS, and JavaScript only (no React, Vue, Svelte, etc.).
+
+Goal:
+Create a small but complete expense tracker someone could use daily. Prioritize working features and clear UX over visual flair.
+
+Technical requirements:
+- Vanilla HTML, CSS, and JavaScript only.
+- Runs locally without a backend: open index.html directly or use a minimal dev server (e.g. npx serve . or Vite).
+- Persist all expenses in localStorage so refresh does not lose data.
+- Include a README with: how to run, feature list, brief file/structure notes.
+
+Core features:
+
+1. Add expense
+   - Fields: amount (required, positive number), category (required, chosen from a fixed list you define), date (required, defaults to today), note (optional short text).
+   - Validate input: reject empty amount, non-numeric amount, and missing category/date with visible error feedback.
+
+2. List expenses
+   - Show all expenses newest-first (or clearest alternative — document in README).
+   - Each row shows amount, category, date, and note (or "—" if empty).
+
+3. Edit and delete
+   - Edit any expense in place (modal or inline — your choice).
+   - Delete with confirmation (browser confirm or custom dialog).
+
+4. Summary
+   - Display total spent and per-category totals that update when expenses change.
+
+5. Filters
+   - Filter the list by category (dropdown or buttons).
+   - Filter by date range (from / to inputs).
+   - Filters combine: category + date range applied together.
+
+6. Theme
+   - Dark/light mode toggle.
+   - Persist theme choice across reloads.
+
+UX expectations:
+- Clear empty state when no expenses exist.
+- Currency formatting for amounts (symbol or label is fine; be consistent).
+- Layout readable on a desktop browser; mobile-perfect responsive design is not required.
+
+Code quality expectations:
+- Split logic across multiple JS files or clear sections (e.g. storage, render, filters) — not one 400-line script with everything inline.
+- No dead UI: every visible control must work.
+
+Scope guidance:
+- Do NOT build: user accounts, backend API, charts/graphs library, export to CSV, or multi-currency conversion.
+- Do NOT add npm dependencies unless you use them only for a dev server; runtime must stay vanilla.
+
+Deliverables:
+- All source files to run the app
+- README with run instructions
+- App works end-to-end without manual code edits
+
+Before finishing, verify:
+- Add, edit, delete, and list expenses work
+- Summary and category totals update correctly
+- Category and date-range filters work together
+- Invalid input shows feedback
+- Data and theme survive browser refresh

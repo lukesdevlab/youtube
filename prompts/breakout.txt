@@ -1,0 +1,50 @@
+Build a playable Breakout-style game that runs locally in the browser using HTML Canvas and vanilla JavaScript.
+
+Goal:
+Classic brick-breaker gameplay with a clear game loop and separated modules. Prioritize a working game loop, readable module boundaries, and correct collision/state handling over visual polish.
+
+Required gameplay:
+
+1. Paddle at the bottom, moved with keyboard (arrow keys or A/D — document in README).
+2. Ball bounces off walls, paddle, and bricks; starts on paddle or after reset.
+3. Bricks — at least 3 rows × 6 columns of destroyable bricks; different row colours optional.
+4. Lives — player starts with 3 lives; losing the ball (falls below paddle) costs one life and resets ball/paddle; at 0 lives, game over.
+5. Score — points per brick destroyed; show score on screen.
+6. Win — all bricks cleared shows a win message and stops or freezes play.
+7. Start / restart — press a key or button to start from game-over or win screen.
+
+Technical requirements:
+- HTML Canvas + vanilla JavaScript (no Phaser, Three.js, Unity, etc.).
+- Run locally via index.html or minimal dev setup (Vite/npm run dev is fine).
+- README: how to run, controls, module layout explanation.
+
+Architecture expectations:
+Split code into clear modules/files, not one monolithic script. At minimum separate:
+- game state (score, lives, playing / won / lost)
+- input / paddle movement
+- ball physics and wall bounce
+- brick grid and collision (ball vs bricks, ball vs paddle)
+- render loop (draw frame from state)
+- main bootstrap / game loop
+
+Example layout: src/state.js, src/input.js, src/ball.js, src/bricks.js, src/render.js, src/main.js — names are flexible if responsibilities are obvious.
+
+Collision:
+- Axis-aligned bounding box or circle-vs-rect checks are fine.
+- Ball should not pass through bricks or paddle at normal speed (basic tunneling prevention optional, not required).
+
+Scope guidance:
+- Simple flat graphics (rectangles) are expected.
+- Do NOT add: sound, levels editor, mobile touch controls, particle effects, or power-ups unless core gameplay is already complete.
+- Fixed canvas size (e.g. 800×600) is fine.
+
+Deliverables:
+- All source files to run the game
+- README with run instructions
+- Playable without manual code edits
+
+Before finishing, verify:
+- Paddle moves; ball bounces and breaks bricks
+- Score increases; lives decrease when ball is lost
+- Win when all bricks gone; game over at 0 lives
+- Can restart after win or game over
