@@ -54,8 +54,4 @@ Deliverables:
 - App works end-to-end without manual code edits
 
 Before finishing, verify:
-- Add, edit, delete, and list expenses work
-- Summary and category totals update correctly
-- Category and date-range filters work together
-- Invalid input shows feedback
-- Data and theme survive browser refresh
+- Code has no obvious bugs or issues

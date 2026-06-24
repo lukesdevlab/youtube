@@ -1,0 +1,90 @@
+Act as an expert software engineer specializing in simulation algorithms and 2D grid graphics.
+
+Your task is to build a self-contained "Slime Mold Pathfinding" simulation inside a single, beautifully styled HTML file. The entire application must be written in vanilla HTML, CSS, and JavaScript with NO external libraries or dependencies.
+
+Do not reuse a tutorial layout or repo you already know. Implement from the rules below.
+
+Goal:
+Agents explore a maze from a fixed start tile toward a fixed goal tile. Over time, scent trails should reinforce a visible path through the maze — similar to how slime mold finds efficient routes. Prioritize correct simulation rules and readable code first — that is what this test measures. Also make it presentable on screen using CSS only (dark dashboard, styled control panel, vivid scent heat overlay). Do not add extra effects or features just for visuals. The emergent trail should be easy to see, not a bare debug grid.
+
+### Visual & UI Requirements:
+1. UI Layout: A clean, cohesive dark-themed dashboard with styled buttons and readable stats. Center the simulation canvas. Include a control panel with:
+   - "Regenerate Maze" — builds a new maze and resets the simulation
+   - "Reset Agents" — clears scent and respawns agents at the start without changing the maze
+   - A readout showing: agent count, simulation tick count, and whether any agent has reached the goal this run
+2. Canvas: Fixed at 500×500 pixels. Use `image-rendering: pixelated` in CSS. Internal grid: exactly 50×50 cells (10×10 pixels per cell on canvas).
+3. Colors:
+   - Background / unexplored floor: #1a1a2e
+   - Walls: #4a4e69
+   - Start tile: #2a9d8f (label or "S" optional)
+   - Goal tile: #e76f51 (label or "G" optional)
+   - Agents: #55ff33 (bright green dots or 1-cell sprites)
+   - Scent heat: render as a translucent warm overlay (yellow → orange → red by intensity); higher scent = brighter. The trail must be clearly visible against the floor as it forms — this is required simulation feedback, not optional decoration.
+
+### Grid & Maze:
+1. Represent the world as a 2D grid with cell types: Wall, Floor, Start, Goal.
+2. Start and Goal must always be Floor tiles on opposite sides of the maze (e.g. start near top-left region, goal near bottom-right region).
+3. Maze generation: use recursive backtracker (or an equivalent perfect-maze algorithm) on an odd-sized cell grid so walls form coherent corridors. Ensure a valid path exists from Start to Goal.
+4. "Regenerate Maze" must produce a different layout each time (use randomness in the generator).
+
+### Simulation Rules (implement exactly):
+Maintain two 2D arrays: `grid` (walls/floor/start/goal) and `scent` (non-negative floats, same dimensions).
+
+1. Agents:
+   - Run exactly 40 agents per simulation.
+   - All agents spawn on the Start tile when the maze loads or resets.
+   - Each tick, each agent moves exactly one cell to an adjacent orthogonal neighbor (up/down/left/right). No diagonal moves. Cannot enter Wall cells.
+   - If an agent reaches the Goal tile, remove it from the active set (it "arrived") and increment an arrived counter.
+
+2. Scent deposit:
+   - After each agent moves, add 0.8 scent only to the cell it **left** (trail behind). Do not deposit on the cell the agent enters.
+   - Cap scent on the Start tile at 2.0 (clamp after deposit) so spawn point does not become an immovable attractor.
+
+3. Scent decay:
+   - At the start of every tick, multiply every cell's scent value by 0.90 (10% decay per tick). Apply decay before agent movement and deposit.
+
+4. Movement choice (the core algorithm):
+   Each agent stores the grid coordinates of the cell it occupied on the previous tick (`previousX`, `previousY`; `null` on first move after spawn).
+
+   a) Build candidates: all valid orthogonal neighbors (in bounds, not Wall).
+
+   b) Anti-backtracking: if there are 2 or more candidates, remove the `previous` cell from candidates. If that leaves zero candidates, allow all valid neighbors (dead-end exception).
+
+   c) Exploration (15%): with probability 0.15, pick uniformly at random among candidates and move there — skip steps (d)–(e) for this agent this tick.
+
+   d) Gradient weights: for each candidate, compute
+      `weight = max(0, scent[candidate] - scent[current]) + 0.05`
+      This follows the scent **gradient**, not absolute scent — agents move toward stronger signal ahead, not back and forth between two hot neighbors.
+
+   e) Weighted choice: pick a candidate by weighted random using the weights from (d). If every weight is identical, break ties uniformly at random.
+
+5. Anti-oscillation (required):
+   - Agents must spread through the maze over time; bouncing between two adjacent tiles is a bug.
+   - The combination of gradient weights, anti-backtracking, one-sided deposit, and 15% exploration must prevent 2-cell loops. Do not implement movement that only compares raw `scent[neighbor]` values without subtracting `scent[current]`.
+
+6. Loop:
+   - Drive the simulation with `requestAnimationFrame` (or a fixed-interval timer at ~30 fps).
+   - Simulation should run continuously until paused or reset; pausing is optional but not required.
+
+### Critical Implementation Rules:
+- Do not read or write scent on Wall cells for movement (agents never occupy walls).
+- Decay must run on the full scent grid every tick — not only on visited cells.
+- Do not use pathfinding libraries or precomputed shortest path; the path must emerge from agent behavior only.
+- Keep agent update order randomized each tick (shuffle agent array before processing) to avoid directional bias artifacts.
+- Each agent must update `previousX`/`previousY` after every move.
+- When 40 agents share the Start tile, they will disperse via random exploration and anti-backtracking — do not special-case Start beyond the scent cap.
+
+### Deliverable:
+Provide the complete, production-ready code inside a single code block containing the full HTML, CSS, and JavaScript. Do not omit logic, do not use placeholders, and do not use comments like "// implement here". The file must be runnable when saved as `.html` and opened locally in a browser.
+
+Before finishing, review your code (read through it — you do not have browser or tooling access to run it) and confirm:
+- Maze generation produces walls with a valid start-to-goal route
+- Scent decays by ×0.90 at the start of each tick before deposits
+- Scent is deposited only on the departed cell (0.8), not the entered cell; Start scent is capped at 2.0
+- Agents cannot pass through walls; movement is orthogonal only
+- Movement uses gradient weights `max(0, scent[neighbor] - scent[current]) + 0.05`, not raw neighbor scent alone
+- Anti-backtracking excludes the previous cell when 2+ candidates exist
+- 15% exploration picks a random valid neighbor before gradient weighting runs
+- Agent processing order is shuffled each tick; previous position is tracked per agent
+- Regenerate and Reset controls are wired to the correct state resets
+- No empty functions or stubbed logic remain
