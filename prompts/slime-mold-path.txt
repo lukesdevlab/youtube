@@ -77,7 +77,9 @@ Maintain two 2D arrays: `grid` (walls/floor/start/goal) and `scent` (non-negativ
 ### Deliverable:
 Provide the complete, production-ready code inside a single code block containing the full HTML, CSS, and JavaScript. Do not omit logic, do not use placeholders, and do not use comments like "// implement here". The file must be runnable when saved as `.html` and opened locally in a browser.
 
-Before finishing, review your code (read through it — you do not have browser or tooling access to run it) and confirm:
+Note: You may not have access to a browser, dev server, or vision tools — do not rely on running or visually inspecting the simulation for verification. Validate by reading and reasoning about the code instead.
+
+Before finishing, review the code to confirm:
 - Maze generation produces walls with a valid start-to-goal route
 - Scent decays by ×0.90 at the start of each tick before deposits
 - Scent is deposited only on the departed cell (0.8), not the entered cell; Start scent is capped at 2.0

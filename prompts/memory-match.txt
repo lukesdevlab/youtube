@@ -54,8 +54,11 @@ Deliverables:
 - README with run instructions
 - Game works end-to-end without manual code edits
 
-Before finishing, verify:
-- Board shuffles on load and on New game
-- Two-card flip limit and mismatch flip-back work
-- Matched pairs stay revealed; win triggers at 8 pairs
-- Move count and best score behave correctly
+Note: You may not have access to a browser, dev server, or vision tools — do not rely on running or visually inspecting the game for verification. Validate by reading and reasoning about the code instead.
+
+Before finishing, review the code to confirm:
+- Deck shuffles on load and on New game; 4×4 grid with 8 pairs
+- Two-card flip limit and mismatch flip-back delay are implemented
+- Matched pairs lock and cannot be flipped again; win triggers when all pairs are matched
+- Move count and best score (localStorage) logic is correct
+- README includes run instructions and rules

@@ -26,3 +26,12 @@ You must implement a discrete 2D grid array state and update it using a strict f
 
 ### Deliverable:
 Provide the complete, production-ready code inside a single code block containing the full HTML, CSS, and JavaScript. Do not omit any logic, do not use placeholders, and do not use "code shortcuts". It must work immediately when saved as an .html file and opened in a browser.
+
+Note: You may not have access to a browser, dev server, or vision tools — do not rely on running or visually inspecting the simulation for verification. Validate by reading and reasoning about the code instead.
+
+Before finishing, review the code to confirm:
+- UI control panel (material select, clear canvas, brush size) is wired to the simulation
+- Grid processes bottom-to-top; horizontal/diagonal checks randomize left vs right first
+- Sand, water, and acid follow the stated movement and interaction rules (including acid dissolve)
+- Mouse dragging paints the selected material onto the grid
+- Complete single HTML file with no placeholders or omitted logic

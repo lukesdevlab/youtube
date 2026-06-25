@@ -74,12 +74,13 @@ Deliverables:
 - README with run instructions
 - App works end-to-end without manual code edits
 
-Before finishing, verify:
-- Drag-and-drop works between and within columns
-- Column add/rename/reorder/delete works (including drag-and-drop reorder on column headers)
-- Cards support title, plain description, labels, and assignee
-- Cards in the Done column show a completion check
-- Archive and restore works
-- Search and filters work together
-- Dark/light mode persists after reload
-- Data persists after browser refresh
+Note: You may not have access to a browser, dev server, or vision tools — do not rely on running or visually inspecting the app for verification. Validate by reading and reasoning about the code instead.
+
+Before finishing, review the code to confirm:
+- Drag-and-drop handlers are wired for cards (between and within columns) and column header reorder
+- Column add/rename/reorder/delete is implemented (including safe handling when deleting columns with cards)
+- Cards include title, plain description, labels, and assignee; Done column shows a completion indicator
+- Archive and restore flow is implemented
+- Search and filters (label, assignee) combine correctly in the filtering logic
+- Dark/light mode and board data persist to localStorage
+- README includes run instructions and feature overview

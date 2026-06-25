@@ -53,5 +53,11 @@ Deliverables:
 - README with run instructions
 - App works end-to-end without manual code edits
 
-Before finishing, verify:
-- Code has no obvious bugs or issues
+Note: You may not have access to a browser, dev server, or vision tools — do not rely on running or visually inspecting the app for verification. Validate by reading and reasoning about the code instead.
+
+Before finishing, review the code to confirm:
+- Add expense validates amount, category, and date with visible error handling
+- List displays expenses with required fields; edit and delete (with confirmation) are wired
+- Summary totals derive from expense data; category and date-range filters combine in the filtering logic
+- Dark/light mode persists to localStorage
+- README includes run instructions and feature list

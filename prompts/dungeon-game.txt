@@ -29,3 +29,12 @@ You must implement a 2D grid array representing the map states (0 = Floor, 1 = W
 
 ### Deliverable:
 Provide the complete, working code inside a single code block containing the HTML, CSS, and JavaScript. Do not leave any functions empty, do not use comments like "// implement logic here", and do not omit edge cases. It must run immediately when opened in a web browser.
+
+Note: You may not have access to a browser, dev server, or vision tools — do not rely on running or visually inspecting the game for verification. Validate by reading and reasoning about the code instead.
+
+Before finishing, review the code to confirm:
+- Map generation (BSP or cellular automata) produces valid floor tiles with connectivity between areas
+- Player moves one tile per keypress and cannot walk through walls
+- Bresenham raycasting marks revealed cells along each ray and stops at walls
+- God mode toggle reveals the full map; regenerate resets the map
+- Complete single HTML file with no empty functions or placeholder logic

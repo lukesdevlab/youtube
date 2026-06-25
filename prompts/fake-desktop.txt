@@ -73,7 +73,9 @@ Deliverables:
 - README with run instructions
 - App should be complete without manual code edits
 
-Before finishing, review your code (read through it — you do not have browser or tooling access to run it) and confirm:
+Note: You may not have access to a browser, dev server, or vision tools — do not rely on running or visually inspecting the app for verification. Validate by reading and reasoning about the code instead.
+
+Before finishing, review the code to confirm:
 - Window manager assigns incrementing z-index on focus; focused window style is applied
 - Dragging uses title-bar hit target only; content area drag does not move the window
 - Minimize hides window and taskbar restore works; minimized windows are not focusable

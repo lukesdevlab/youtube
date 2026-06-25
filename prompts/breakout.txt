@@ -43,8 +43,11 @@ Deliverables:
 - README with run instructions
 - Playable without manual code edits
 
-Before finishing, verify:
-- Paddle moves; ball bounces and breaks bricks
-- Score increases; lives decrease when ball is lost
-- Win when all bricks gone; game over at 0 lives
-- Can restart after win or game over
+Note: You may not have access to a browser, dev server, or vision tools — do not rely on running or visually inspecting the game for verification. Validate by reading and reasoning about the code instead.
+
+Before finishing, review the code to confirm:
+- Paddle movement and ball bounce/brick collision logic is implemented and wired to input
+- Score increases on brick destroy; lives decrease when the ball is lost
+- Win state triggers when all bricks are cleared; game over at 0 lives
+- Restart flow is wired for both win and game over states
+- README includes run instructions, controls, and module layout

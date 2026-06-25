@@ -46,9 +46,12 @@ Deliverables:
 - README with run instructions
 - The game should be playable end-to-end without manual code edits
 
-Before finishing, verify:
-- The car can move and steer
-- The viewport follows the car
-- I can drive through tunnel → bridge → finish sections in order
-- At least 3 obstacles penalize the car via collision
-- The finish line triggers a win state
+Note: You may not have access to a browser, dev server, or vision tools — do not rely on running or visually inspecting the game for verification. Validate by reading and reasoning about the code instead.
+
+Before finishing, review the code to confirm:
+- Car movement and steering logic is implemented and wired to input
+- The viewport/camera follows the car
+- The track defines open → tunnel → bridge → finish sections in order
+- At least 3 obstacles are placed and collision detection resets or penalizes the car
+- Reaching the finish line updates game state to a win condition
+- README includes run instructions, controls, and a brief module overview
